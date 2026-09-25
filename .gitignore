@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+backend/dist/
+smart-contracts/artifacts/
+smart-contracts/cache/
+smart-contracts/typechain-types/
+
+# Test and coverage output
+coverage/
+**/coverage/
+.nyc_output/
+
+# Environment and secrets
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Local runtime storage and generated temporary files
+backend/storage/
+tmp/
+*.tsbuildinfo
+
+# Logs and diagnostic output
+logs/
+**/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+backend/_*.txt
+backend/*_output.txt
+backend/*_result.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor local files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Documentation markdown excluded from repository
+*.md
+
+# Downloaded legal-source artifacts excluded from repository
+cpc_indiacode*.html
+indiacode_main.js
+leg_chunk_*.js
+leg_next.json
+legisl_*.js
+legisl_*.html
+legisl_*.json
+legisl_*.txt
+legtest*.html
+
+cpc_indiacode_headers.txt

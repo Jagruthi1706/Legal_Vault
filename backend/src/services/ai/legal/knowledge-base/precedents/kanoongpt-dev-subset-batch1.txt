@@ -1,0 +1,234 @@
+Precedent corpus batch 1 — KanoonGPT Indian Case Laws (development subset).
+Provenance basis: registered kanoongpt-dev-subset entry (Apache-2.0). Every
+record below is a verbatim member entry of the REGISTERED development subset
+(backend/src/services/ai/legal/corpus/authorities.json, phase5-dev-1 /
+phase6-dev-1). Membership verified 2026-09-05 against the registered corpus;
+the upstream dataset identity (KanoonGPT/indian-case-laws, apache-2.0) was
+verified via the Hugging Face datasets API. Fields not present in the
+registered subset are recorded as N/A and are never invented. Holding text is
+carried verbatim from the registered subset, including its development-use
+disclaimers. These are development/demonstration authorities, not official
+court reports.
+================================================================================
+Record: PREC-SUPREMECOURT-1973-AUTH-KESAVANANDA-1973
+CASE_ID: PREC-SUPREMECOURT-1973-AUTH-KESAVANANDA-1973
+CASE_NAME: Kesavananda Bharati Sripadagalvaru v. State of Kerala
+COURT: Supreme Court of India
+BENCH: N/A
+JUDGES: N/A
+DATE: 1973-04-24
+CASE_NUMBER: Writ Petition No. 135 of 1970
+CITATION: (1973) 4 SCC 225
+LEGAL_AREA: Constitutional Law
+SUB_AREA: Constitutional amendment and basic structure
+FACTS: N/A
+ISSUES: N/A
+ARGUMENTS: N/A
+APPLICABLE_ARTICLES: N/A
+APPLICABLE_STATUTES: Constitution of India
+APPLICABLE_SECTIONS: N/A
+APPLICABLE_RULES: N/A
+LEGAL_PRINCIPLE: N/A
+RATIO: N/A
+HOLDING: The Supreme Court held that Parliament's amending power does not extend to destroying the basic structure of the Constitution. The development excerpt records that holding and citation only. It is not a finding about any Legal Vault case document or hash.
+FINAL_OUTCOME: N/A
+REMEDY: N/A
+RELIEF: N/A
+RELATED_CASES: N/A
+FOLLOWED_CASES: N/A
+DISTINGUISHED_CASES: N/A
+OVERRULED_STATUS: N/A
+CURRENT_STATUS: N/A
+TEMPORAL_METADATA: N/A
+VERSION: phase5-dev-1
+OFFICIAL_SOURCE_NAME: KanoonGPT Indian Case Laws (development subset)
+OFFICIAL_SOURCE_URL: https://indiankanoon.org/doc/257876/
+OFFICIAL_IDENTIFIER: auth-kesavananda-1973
+VERIFICATION_STATUS: Verified against registered kanoongpt-dev-subset (verbatim member entry)
+LAST_VERIFIED_AT: 2026-09-05
+================================================================================
+Record: PREC-SUPREMECOURT-1978-AUTH-MANEKA-1978
+CASE_ID: PREC-SUPREMECOURT-1978-AUTH-MANEKA-1978
+CASE_NAME: Maneka Gandhi v. Union of India
+COURT: Supreme Court of India
+BENCH: N/A
+JUDGES: N/A
+DATE: 1978-01-25
+CASE_NUMBER: Writ Petition No. 231 of 1977
+CITATION: (1978) 1 SCC 248
+LEGAL_AREA: Constitutional Law
+SUB_AREA: Personal liberty and fair procedure (Article 21)
+FACTS: N/A
+ISSUES: N/A
+ARGUMENTS: N/A
+APPLICABLE_ARTICLES: Article 21
+APPLICABLE_STATUTES: N/A
+APPLICABLE_SECTIONS: N/A
+APPLICABLE_RULES: N/A
+LEGAL_PRINCIPLE: N/A
+RATIO: N/A
+HOLDING: The Supreme Court held that the procedure under Article 21 must be fair, just and reasonable, not merely a form of procedure established by law. Personal liberty has a wide meaning. This constitutional holding is legal-authority context only and is not evidence from a user-uploaded case file.
+FINAL_OUTCOME: N/A
+REMEDY: N/A
+RELIEF: N/A
+RELATED_CASES: N/A
+FOLLOWED_CASES: N/A
+DISTINGUISHED_CASES: N/A
+OVERRULED_STATUS: N/A
+CURRENT_STATUS: N/A
+TEMPORAL_METADATA: N/A
+VERSION: phase5-dev-1
+OFFICIAL_SOURCE_NAME: KanoonGPT Indian Case Laws (development subset)
+OFFICIAL_SOURCE_URL: https://indiankanoon.org/doc/1766147/
+OFFICIAL_IDENTIFIER: auth-maneka-1978
+VERIFICATION_STATUS: Verified against registered kanoongpt-dev-subset (verbatim member entry)
+LAST_VERIFIED_AT: 2026-09-05
+================================================================================
+Record: PREC-HIGHCOURTOFD-2009-AUTH-NAZ-DELHI-HC-2009
+CASE_ID: PREC-HIGHCOURTOFD-2009-AUTH-NAZ-DELHI-HC-2009
+CASE_NAME: Naz Foundation v. Government of NCT of Delhi
+COURT: High Court of Delhi
+BENCH: N/A
+JUDGES: N/A
+DATE: 2009-07-02
+CASE_NUMBER: WP(C) No. 7455 of 2001
+CITATION: (2009) 160 DLT 277
+LEGAL_AREA: Constitutional Law
+SUB_AREA: Equality, dignity and criminalization (reading down)
+FACTS: N/A
+ISSUES: N/A
+ARGUMENTS: N/A
+APPLICABLE_ARTICLES: Articles 14, 15 and 21
+APPLICABLE_STATUTES: Indian Penal Code, 1860
+APPLICABLE_SECTIONS: Section 377
+APPLICABLE_RULES: N/A
+LEGAL_PRINCIPLE: N/A
+RATIO: N/A
+HOLDING: The Delhi High Court read down Section 377 IPC insofar as it criminalised consensual sexual acts of adults in private, locating the conclusion in Articles 14, 15 and 21. This is a High Court authority in the development corpus. It does not decide any user case and is not Supreme Court precedent by itself.
+FINAL_OUTCOME: N/A
+REMEDY: N/A
+RELIEF: N/A
+RELATED_CASES: N/A
+FOLLOWED_CASES: N/A
+DISTINGUISHED_CASES: N/A
+OVERRULED_STATUS: N/A
+CURRENT_STATUS: N/A
+TEMPORAL_METADATA: N/A
+VERSION: phase5-dev-1
+OFFICIAL_SOURCE_NAME: KanoonGPT Indian Case Laws (development subset)
+OFFICIAL_SOURCE_URL: https://indiankanoon.org/doc/100472805/
+OFFICIAL_IDENTIFIER: auth-naz-delhi-hc-2009
+VERIFICATION_STATUS: Verified against registered kanoongpt-dev-subset (verbatim member entry)
+LAST_VERIFIED_AT: 2026-09-05
+================================================================================
+Record: PREC-SUPREMECOURT-1979-AUTH-HUSSAINARA-1979
+CASE_ID: PREC-SUPREMECOURT-1979-AUTH-HUSSAINARA-1979
+CASE_NAME: Hussainara Khatoon v. Home Secretary, State of Bihar
+COURT: Supreme Court of India
+BENCH: N/A
+JUDGES: N/A
+DATE: 1979-02-12
+CASE_NUMBER: Writ Petition No. 57 of 1979
+CITATION: (1980) 1 SCC 81
+LEGAL_AREA: Constitutional Law
+SUB_AREA: Speedy trial and personal liberty
+FACTS: N/A
+ISSUES: N/A
+ARGUMENTS: N/A
+APPLICABLE_ARTICLES: Article 21
+APPLICABLE_STATUTES: N/A
+APPLICABLE_SECTIONS: N/A
+APPLICABLE_RULES: N/A
+LEGAL_PRINCIPLE: N/A
+RATIO: N/A
+HOLDING: The Supreme Court treated speedy trial as part of personal liberty under Article 21. Prolonged pre-trial detention of undertrials was held to be inconsistent with that guarantee. This public holding is legal-authority context only and is not evidence from a user case file.
+FINAL_OUTCOME: N/A
+REMEDY: N/A
+RELIEF: N/A
+RELATED_CASES: N/A
+FOLLOWED_CASES: N/A
+DISTINGUISHED_CASES: N/A
+OVERRULED_STATUS: N/A
+CURRENT_STATUS: N/A
+TEMPORAL_METADATA: N/A
+VERSION: phase6-dev-1
+OFFICIAL_SOURCE_NAME: KanoonGPT Indian Case Laws (development subset)
+OFFICIAL_SOURCE_URL: https://indiankanoon.org/doc/1373217/
+OFFICIAL_IDENTIFIER: auth-hussainara-1979
+VERIFICATION_STATUS: Verified against registered kanoongpt-dev-subset (verbatim member entry)
+LAST_VERIFIED_AT: 2026-09-05
+================================================================================
+Record: PREC-SUPREMECOURT-1996-AUTH-DK-BASU-1997
+CASE_ID: PREC-SUPREMECOURT-1996-AUTH-DK-BASU-1997
+CASE_NAME: D.K. Basu v. State of West Bengal
+COURT: Supreme Court of India
+BENCH: N/A
+JUDGES: N/A
+DATE: 1996-12-18
+CASE_NUMBER: Writ Petition (Crl) No. 592 of 1987
+CITATION: (1997) 1 SCC 416
+LEGAL_AREA: Constitutional Law
+SUB_AREA: Arrest and detention safeguards (Article 21)
+FACTS: N/A
+ISSUES: N/A
+ARGUMENTS: N/A
+APPLICABLE_ARTICLES: Article 21
+APPLICABLE_STATUTES: N/A
+APPLICABLE_SECTIONS: N/A
+APPLICABLE_RULES: N/A
+LEGAL_PRINCIPLE: N/A
+RATIO: N/A
+HOLDING: The Supreme Court issued mandatory arrest and detention guidelines, including identification of arresting officers, a memo of arrest, and the right to inform a relative or friend. The authority concerns police procedure and Article 21, not a Legal Vault workspace exhibit.
+FINAL_OUTCOME: N/A
+REMEDY: N/A
+RELIEF: N/A
+RELATED_CASES: N/A
+FOLLOWED_CASES: N/A
+DISTINGUISHED_CASES: N/A
+OVERRULED_STATUS: N/A
+CURRENT_STATUS: N/A
+TEMPORAL_METADATA: N/A
+VERSION: phase6-dev-1
+OFFICIAL_SOURCE_NAME: KanoonGPT Indian Case Laws (development subset)
+OFFICIAL_SOURCE_URL: https://indiankanoon.org/doc/501198/
+OFFICIAL_IDENTIFIER: auth-dk-basu-1997
+VERIFICATION_STATUS: Verified against registered kanoongpt-dev-subset (verbatim member entry)
+LAST_VERIFIED_AT: 2026-09-05
+================================================================================
+Record: PREC-SUPREMECOURT-2017-AUTH-PUTTASWAMY-2017
+CASE_ID: PREC-SUPREMECOURT-2017-AUTH-PUTTASWAMY-2017
+CASE_NAME: Justice K.S. Puttaswamy (Retd.) v. Union of India
+COURT: Supreme Court of India
+BENCH: N/A
+JUDGES: N/A
+DATE: 2017-08-24
+CASE_NUMBER: Writ Petition (Civil) No. 494 of 2012
+CITATION: (2017) 10 SCC 1
+LEGAL_AREA: Constitutional Law
+SUB_AREA: Privacy and proportionality
+FACTS: N/A
+ISSUES: N/A
+ARGUMENTS: N/A
+APPLICABLE_ARTICLES: Articles 14, 19 and 21
+APPLICABLE_STATUTES: N/A
+APPLICABLE_SECTIONS: N/A
+APPLICABLE_RULES: N/A
+LEGAL_PRINCIPLE: N/A
+RATIO: N/A
+HOLDING: A nine-judge bench held that privacy is a fundamental right protected by Articles 14, 19 and 21. Any restriction must satisfy legality, legitimate aim and proportionality. This constitutional holding is legal-authority context, not user evidence or a blockchain fact.
+FINAL_OUTCOME: N/A
+REMEDY: N/A
+RELIEF: N/A
+RELATED_CASES: N/A
+FOLLOWED_CASES: N/A
+DISTINGUISHED_CASES: N/A
+OVERRULED_STATUS: N/A
+CURRENT_STATUS: N/A
+TEMPORAL_METADATA: N/A
+VERSION: phase6-dev-1
+OFFICIAL_SOURCE_NAME: KanoonGPT Indian Case Laws (development subset)
+OFFICIAL_SOURCE_URL: https://indiankanoon.org/doc/127517806/
+OFFICIAL_IDENTIFIER: auth-puttaswamy-2017
+VERIFICATION_STATUS: Verified against registered kanoongpt-dev-subset (verbatim member entry)
+LAST_VERIFIED_AT: 2026-09-05
+================================================================================

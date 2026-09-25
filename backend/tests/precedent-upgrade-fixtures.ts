@@ -1,0 +1,145 @@
+import { PrismaClient } from '@prisma/client';
+
+export const DELIM = '='.repeat(80);
+
+export const SAMPLE_CORPUS = [
+  DELIM,
+  'Record: PREC-SUPREMECOURT-1973-AUTH-KESAVANANDA-1973',
+  'CASE_ID: PREC-SUPREMECOURT-1973-AUTH-KESAVANANDA-1973',
+  'CASE_NAME: Kesavananda Bharati Sripadagalvaru v. State of Kerala',
+  'COURT: Supreme Court of India',
+  'DATE: 1973-04-24',
+  'CASE_NUMBER: Writ Petition No. 135 of 1970',
+  'CITATION: (1973) 4 SCC 225',
+  'LEGAL_AREA: Constitutional Law',
+  'SUB_AREA: Constitutional amendment and basic structure',
+  'FACTS: N/A',
+  'ISSUES: N/A',
+  'APPLICABLE_ARTICLES: N/A',
+  'APPLICABLE_STATUTES: Constitution of India',
+  'APPLICABLE_SECTIONS: N/A',
+  'HOLDING: The Supreme Court held that Parliament amending power does not extend to destroying the basic structure.',
+  'OFFICIAL_SOURCE_NAME: KanoonGPT Indian Case Laws (development subset)',
+  'OFFICIAL_SOURCE_URL: https://indiankanoon.org/doc/257876/',
+  'OFFICIAL_IDENTIFIER: auth-kesavananda-1973',
+  'VERIFICATION_STATUS: Verified against registered kanoongpt-dev-subset (verbatim member entry)',
+  'LAST_VERIFIED_AT: 2026-09-05',
+  'VERSION: phase5-dev-1',
+  DELIM,
+  'Record: PREC-SUPREMECOURT-2017-AUTH-PUTTASWAMY-2017',
+  'CASE_ID: PREC-SUPREMECOURT-2017-AUTH-PUTTASWAMY-2017',
+  'CASE_NAME: Justice K.S. Puttaswamy (Retd.) v. Union of India',
+  'COURT: Supreme Court of India',
+  'DATE: 2017-08-24',
+  'CASE_NUMBER: Writ Petition (Civil) No. 494 of 2012',
+  'CITATION: (2017) 10 SCC 1',
+  'LEGAL_AREA: Constitutional Law',
+  'SUB_AREA: Privacy and proportionality',
+  'APPLICABLE_ARTICLES: Articles 14, 19 and 21',
+  'APPLICABLE_STATUTES: N/A',
+  'APPLICABLE_SECTIONS: N/A',
+  'HOLDING: A nine-judge bench held that privacy is a fundamental right.',
+  'OFFICIAL_SOURCE_NAME: KanoonGPT Indian Case Laws (development subset)',
+  'OFFICIAL_SOURCE_URL: https://indiankanoon.org/doc/127517806/',
+  'OFFICIAL_IDENTIFIER: auth-puttaswamy-2017',
+  'VERIFICATION_STATUS: Verified against registered kanoongpt-dev-subset (verbatim member entry)',
+  'LAST_VERIFIED_AT: 2026-09-05',
+  'VERSION: phase6-dev-1',
+  DELIM,
+].join('\n');
+
+export const EXISTING_ROWS = [
+  {
+    id: 'auth-kesavananda-1973:section:1',
+    documentId: 'auth-kesavananda-1973',
+    scope: 'LEGAL_AUTHORITY',
+    text: 'The Supreme Court held that Parliaments amending power does not extend to destroying the basic structure of the Constitution.',
+    embedding: { dim: 256 },
+    provenance: {
+      court: 'Supreme Court of India',
+      source: 'KanoonGPT Indian Case Laws (development subset)',
+      license: 'Apache-2.0',
+      caseName: 'Kesavananda Bharati Sripadagalvaru v. State of Kerala',
+      citation: '(1973) 4 SCC 225',
+      sourceUrl: 'https://indiankanoon.org/doc/257876/',
+      caseNumber: 'Writ Petition No. 135 of 1970',
+      documentType: 'judgment',
+      judgmentDate: '1973-04-24',
+      jurisdiction: 'India',
+    },
+    metadata: {
+      court: 'Supreme Court of India',
+      source: 'KanoonGPT Indian Case Laws (development subset)',
+      license: 'Apache-2.0',
+      version: 'phase5-dev-1',
+      caseName: 'Kesavananda Bharati Sripadagalvaru v. State of Kerala',
+      citation: '(1973) 4 SCC 225',
+      sourceUrl: 'https://indiankanoon.org/doc/257876/',
+      caseNumber: 'Writ Petition No. 135 of 1970',
+      documentId: 'auth-kesavananda-1973',
+      ingestedAt: '2026-08-14',
+      attribution: 'Public Supreme Court holding; development excerpt.',
+      documentType: 'judgment',
+      judgmentDate: '1973-04-24',
+      jurisdiction: 'India',
+      pageOrSection: 'Section 1',
+    },
+    createdAt: new Date('2026-08-14'),
+    updatedAt: new Date('2026-08-14'),
+  },
+  {
+    id: 'auth-puttaswamy-2017:section:1',
+    documentId: 'auth-puttaswamy-2017',
+    scope: 'LEGAL_AUTHORITY',
+    text: 'A nine-judge bench held that privacy is a fundamental right protected by Articles 14, 19 and 21.',
+    embedding: { dim: 256 },
+    provenance: {
+      court: 'Supreme Court of India',
+      source: 'KanoonGPT Indian Case Laws (development subset)',
+      license: 'Apache-2.0',
+      caseName: 'Justice K.S. Puttaswamy (Retd.) v. Union of India',
+      citation: '(2017) 10 SCC 1',
+      sourceUrl: 'https://indiankanoon.org/doc/127517806/',
+      caseNumber: 'Writ Petition (Civil) No. 494 of 2012',
+      documentType: 'judgment',
+      judgmentDate: '2017-08-24',
+      jurisdiction: 'India',
+    },
+    metadata: {
+      court: 'Supreme Court of India',
+      source: 'KanoonGPT Indian Case Laws (development subset)',
+      license: 'Apache-2.0',
+      version: 'phase6-dev-1',
+      caseName: 'Justice K.S. Puttaswamy (Retd.) v. Union of India',
+      citation: '(2017) 10 SCC 1',
+      sourceUrl: 'https://indiankanoon.org/doc/127517806/',
+      caseNumber: 'Writ Petition (Civil) No. 494 of 2012',
+      documentId: 'auth-puttaswamy-2017',
+      ingestedAt: '2026-08-14',
+      attribution: 'Public Supreme Court holding; development excerpt.',
+      documentType: 'judgment',
+      judgmentDate: '2017-08-24',
+      jurisdiction: 'India',
+      pageOrSection: 'Section 1',
+    },
+    createdAt: new Date('2026-08-14'),
+    updatedAt: new Date('2026-08-14'),
+  },
+];
+
+export function createFakePrisma(rows: Array<Record<unknown, unknown>>) {
+  let writes = 0;
+  return {
+    legalAuthorityChunk: {
+      findMany: async () => rows,
+      update: async (args: { where: { id: string }; data: { metadata: unknown } }) => {
+        writes += 1;
+        const row = rows.find((r) => r.id === args.where.id);
+        if (!row) throw new Error(`row not found: ${args.where.id}`);
+        row.metadata = args.data.metadata;
+        return row;
+      },
+    },
+    _writes: () => writes,
+  } as unknown as PrismaClient & { _writes: () => number };
+}

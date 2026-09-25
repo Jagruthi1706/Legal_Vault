@@ -1,0 +1,361 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id                  String               @id @default(uuid())
+  name                String
+  email               String               @unique
+  role                Role                 @default(CITIZEN)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  passwordHash        String?
+  auditLogs           AuditLog[]           @relation("auditActor")
+  assignedCases       Case[]               @relation("caseAssignedJudge")
+  createdCases        Case[]               @relation("caseCreatedBy")
+  caseParticipants    CaseParticipant[]
+  documents           Document[]           @relation("uploadedDocuments")
+  documentComparisons DocumentComparison[] @relation("comparisonActor")
+  submittedEvidence   Evidence[]           @relation("submittedEvidence")
+  verificationRecords VerificationRecord[] @relation("verificationJudge")
+}
+
+model Case {
+  id                     String                  @id @default(uuid())
+  caseNumber             String                  @unique
+  title                  String
+  description            String?
+  caseType               CaseType                @default(OTHER)
+  status                 CaseStatus              @default(DRAFT)
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @updatedAt
+  createdById            String?
+  assignedJudgeId        String?
+  auditLogs              AuditLog[]
+  blockchainTransactions BlockchainTransaction[]
+  assignedJudge          User?                   @relation("caseAssignedJudge", fields: [assignedJudgeId], references: [id], onDelete: Restrict)
+  createdBy              User?                   @relation("caseCreatedBy", fields: [createdById], references: [id], onDelete: Restrict)
+  participants           CaseParticipant[]
+  documents              Document[]
+  documentComparisons    DocumentComparison[]
+  evidence               Evidence[]
+  verificationRecords    VerificationRecord[]
+
+  @@index([status])
+  @@index([caseType])
+  @@index([createdById])
+  @@index([assignedJudgeId])
+}
+
+model CaseParticipant {
+  id              String          @id @default(uuid())
+  caseId          String
+  userId          String
+  participantRole ParticipantRole
+  createdAt       DateTime        @default(now())
+  case            Case            @relation(fields: [caseId], references: [id])
+  user            User            @relation(fields: [userId], references: [id])
+
+  @@unique([caseId, userId])
+  @@index([userId])
+  @@index([caseId])
+}
+
+model Document {
+  id                     String                  @id @default(uuid())
+  caseId                 String
+  uploadedById           String
+  originalFileName       String
+  mimeType               String
+  fileSize               Int
+  storageKey             String
+  documentType           DocumentType            @default(OTHER)
+  description            String?
+  version                Int                     @default(1)
+  sha256Hash             String?
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @updatedAt
+  auditLogs              AuditLog[]
+  blockchainTransactions BlockchainTransaction[]
+  case                   Case                    @relation(fields: [caseId], references: [id])
+  uploadedBy             User                    @relation("uploadedDocuments", fields: [uploadedById], references: [id])
+  originalComparisons    DocumentComparison[]    @relation("originalDocumentComparisons")
+  evidence               Evidence[]
+  verificationRecords    VerificationRecord[]
+
+  @@index([caseId])
+  @@index([uploadedById])
+  @@index([sha256Hash])
+}
+
+model Evidence {
+  id                  String               @id @default(uuid())
+  caseId              String
+  documentId          String?
+  evidenceNumber      String
+  title               String
+  description         String?
+  evidenceType        EvidenceType         @default(OTHER)
+  submittedById       String
+  status              EvidenceStatus       @default(SUBMITTED)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  auditLogs           AuditLog[]
+  case                Case                 @relation(fields: [caseId], references: [id])
+  document            Document?            @relation(fields: [documentId], references: [id], onDelete: Restrict)
+  submittedBy         User                 @relation("submittedEvidence", fields: [submittedById], references: [id])
+  verificationRecords VerificationRecord[]
+
+  @@unique([caseId, evidenceNumber])
+  @@index([caseId])
+  @@index([documentId])
+  @@index([submittedById])
+  @@index([status])
+}
+
+model BlockchainTransaction {
+  id                  String               @id @default(uuid())
+  transactionHash     String               @unique
+  blockNumber         Int
+  contractAddress     String
+  chainId             Int
+  documentHash        String
+  eventType           String               @default("EVIDENCE_UPLOAD")
+  status              String               @default("CONFIRMED")
+  createdAt           DateTime             @default(now())
+  documentId          String
+  caseId              String
+  case                Case                 @relation(fields: [caseId], references: [id])
+  document            Document             @relation(fields: [documentId], references: [id])
+  documentComparisons DocumentComparison[]
+  verificationRecords VerificationRecord[]
+
+  @@index([documentId])
+  @@index([caseId])
+  @@index([transactionHash])
+  @@index([documentHash])
+}
+
+model AuditLog {
+  id             String              @id @default(uuid())
+  caseId         String
+  actorId        String?
+  action         AuditAction
+  entityType     AuditEntityType
+  documentId     String?
+  evidenceId     String?
+  verificationId String?
+  comparisonId   String?
+  metadata       Json?
+  createdAt      DateTime            @default(now())
+  actor          User?               @relation("auditActor", fields: [actorId], references: [id], onDelete: Restrict)
+  case           Case                @relation(fields: [caseId], references: [id])
+  comparison     DocumentComparison? @relation(fields: [comparisonId], references: [id], onDelete: Restrict)
+  document       Document?           @relation(fields: [documentId], references: [id], onDelete: Restrict)
+  evidence       Evidence?           @relation(fields: [evidenceId], references: [id], onDelete: Restrict)
+  verification   VerificationRecord? @relation(fields: [verificationId], references: [id], onDelete: Restrict)
+
+  @@index([caseId, createdAt])
+  @@index([actorId, createdAt])
+  @@index([documentId, createdAt])
+  @@index([evidenceId, createdAt])
+  @@index([caseId, action, createdAt])
+}
+
+model VerificationRecord {
+  id                      String                 @id @default(uuid())
+  caseId                  String
+  documentId              String
+  evidenceId              String?
+  judgeId                 String
+  integrityStatus         IntegrityStatus
+  judicialDecision        JudicialDecision?
+  decisionReason          String?
+  verifiedHash            String?
+  currentHash             String?
+  blockchainTransactionId String?
+  blockchainReference     String?
+  verificationDetails     Json?
+  verifiedAt              DateTime               @default(now())
+  createdAt               DateTime               @default(now())
+  auditLogs               AuditLog[]
+  blockchainTransaction   BlockchainTransaction? @relation(fields: [blockchainTransactionId], references: [id], onDelete: Restrict)
+  case                    Case                   @relation(fields: [caseId], references: [id])
+  document                Document               @relation(fields: [documentId], references: [id])
+  evidence                Evidence?              @relation(fields: [evidenceId], references: [id], onDelete: Restrict)
+  judge                   User                   @relation("verificationJudge", fields: [judgeId], references: [id])
+
+  @@index([caseId, verifiedAt])
+  @@index([documentId, verifiedAt])
+  @@index([evidenceId, verifiedAt])
+  @@index([judgeId, verifiedAt])
+  @@index([caseId, integrityStatus, verifiedAt])
+  @@index([caseId, judicialDecision, verifiedAt])
+}
+
+model DocumentComparison {
+  id                      String                 @id @default(uuid())
+  caseId                  String
+  originalDocumentId      String
+  actorId                 String
+  blockchainTransactionId String?
+  originalHash            String
+  candidateHash           String
+  result                  ComparisonResult
+  candidateFileName       String?
+  candidateMimeType       String?
+  candidateFileSize       Int?
+  details                 Json?
+  comparedAt              DateTime               @default(now())
+  createdAt               DateTime               @default(now())
+  auditLogs               AuditLog[]
+  actor                   User                   @relation("comparisonActor", fields: [actorId], references: [id])
+  blockchainTransaction   BlockchainTransaction? @relation(fields: [blockchainTransactionId], references: [id], onDelete: Restrict)
+  case                    Case                   @relation(fields: [caseId], references: [id])
+  originalDocument        Document               @relation("originalDocumentComparisons", fields: [originalDocumentId], references: [id])
+
+  @@index([caseId, comparedAt])
+  @@index([originalDocumentId, comparedAt])
+  @@index([actorId, comparedAt])
+  @@index([blockchainTransactionId])
+}
+
+model LegalAuthorityChunk {
+  id         String   @id
+  documentId String
+  scope      String
+  text       String
+  embedding  Json
+  provenance Json
+  metadata   Json
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([documentId])
+  @@index([scope])
+}
+
+enum Role {
+  CITIZEN
+  LAWYER
+  JUDGE
+  CLERK
+  ADMIN
+}
+
+enum CaseStatus {
+  DRAFT
+  FILED
+  ACTIVE
+  HEARING
+  JUDGMENT
+  CLOSED
+  ARCHIVED
+}
+
+enum CaseType {
+  CIVIL
+  CRIMINAL
+  CONSTITUTIONAL
+  CORPORATE
+  PROPERTY
+  FAMILY
+  TAXATION
+  ENVIRONMENTAL
+  OTHER
+}
+
+enum ParticipantRole {
+  PETITIONER
+  RESPONDENT
+  LAWYER
+  JUDGE
+  CLERK
+  OTHER
+}
+
+enum DocumentType {
+  FILING
+  AFFIDAVIT
+  ORDER
+  EVIDENCE
+  CONTRACT
+  OTHER
+}
+
+enum EvidenceType {
+  DOCUMENT
+  WITNESS
+  DIGITAL
+  PHYSICAL
+  OTHER
+}
+
+enum EvidenceStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  ACCEPTED
+  REJECTED
+  SEALED
+}
+
+enum AuditAction {
+  CASE_CREATED
+  CASE_UPDATED
+  PARTICIPANT_ADDED
+  PARTICIPANT_REMOVED
+  CASE_JUDGE_ASSIGNED
+  DOCUMENT_UPLOADED
+  DOCUMENT_VIEWED
+  DOCUMENT_DOWNLOADED
+  EVIDENCE_SUBMITTED
+  EVIDENCE_STATUS_CHANGED
+  DOCUMENT_ANCHORED
+  DOCUMENT_VERIFICATION_STARTED
+  DOCUMENT_VERIFIED
+  DOCUMENT_REJECTED
+  DOCUMENT_VERIFICATION_UNAVAILABLE
+  TAMPER_CHECK_PERFORMED
+  USER_ROLE_CHANGED
+  LOGIN
+  FAILED_LOGIN
+  LOGOUT
+}
+
+enum AuditEntityType {
+  CASE
+  CASE_PARTICIPANT
+  DOCUMENT
+  EVIDENCE
+  BLOCKCHAIN_TRANSACTION
+  VERIFICATION_RECORD
+  DOCUMENT_COMPARISON
+  USER
+  AUTH_SESSION
+}
+
+enum IntegrityStatus {
+  VERIFIED
+  MODIFIED
+  NOT_ANCHORED
+  VERIFICATION_UNAVAILABLE
+  HASH_MISMATCH
+}
+
+enum JudicialDecision {
+  ACCEPTED
+  REJECTED
+}
+
+enum ComparisonResult {
+  UNMODIFIED
+  TAMPERED
+  ORIGINAL_NOT_ANCHORED
+  VERIFICATION_UNAVAILABLE
+}

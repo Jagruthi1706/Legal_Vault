@@ -1,0 +1,24 @@
+{
+  "registries": [
+    {
+      "id": "kanoongpt-dev-subset",
+      "datasetName": "KanoonGPT Indian Case Laws (development subset)",
+      "url": "https://huggingface.co/datasets/KanoonGPT/indian-case-laws",
+      "license": "Apache-2.0",
+      "attribution": "Development subset of public Supreme Court and High Court holdings, prepared for Legal Vault RAG. Modeled on the KanoonGPT Indian Case Laws corpus (Apache-2.0), which covers the Supreme Court of India and 25 High Courts including Telangana. Full remote dataset is not ingested.",
+      "ingestedAt": "2026-08-14",
+      "version": "phase5-dev-1",
+      "permittedUseNotes": "Internal development and demonstration RAG only. Do not treat excerpts as official reports. Do not mix with incompatible commercial datasets."
+    },
+    {
+      "id": "india-code",
+      "datasetName": "India Code",
+      "url": "https://www.indiacode.nic.in",
+      "license": "Government of India public legislative text",
+      "attribution": "Official India Code / Government of India legislative publication. Short development excerpts only.",
+      "ingestedAt": "2026-08-14",
+      "version": "phase5-dev-1",
+      "permittedUseNotes": "Statutory text is public legislative material. Keep provenance and official URLs. Do not combine with unlicensed commercial reporters."
+    }
+  ]
+}
